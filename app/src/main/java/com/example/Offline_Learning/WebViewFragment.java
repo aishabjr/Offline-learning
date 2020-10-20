@@ -14,17 +14,10 @@ import android.widget.Button;
 
 import com.example.myapplication.R;
 
-/**
- * A simple example that shows how to use the webview widget in an app.
- *
- * Added the safe browsing meta tag to the manifest.  no page to test with so I don't actually know if it works.
- *
- * A note, not all mobile pages allow zooming by default, UW's main page doesn't.  Then again, their web programmers are dumbasses too.  Look at their pages source code, dead obvious.
- */
 public class WebViewFragment extends Fragment {
 
     WebView browser;
-    Button btnZoomIn, btnZoomOut, btnBack, btnForward;
+    Button btnBack, btnForward;
 
     public WebViewFragment() {
         // Required empty public constructor
@@ -47,21 +40,6 @@ public class WebViewFragment extends Fragment {
         //in the app.
         browser.setWebViewClient(new CallBack());
 
-//        //how buttons from zoom and forward/back.
-//        btnZoomIn =  myView.findViewById(R.id.btnZoomIn);
-//        btnZoomIn.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                browser.zoomIn();
-//            }
-//        });
-//        btnZoomOut = myView.findViewById(R.id.btnZoomOut);
-//        btnZoomOut.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                browser.zoomOut();
-//            }
-//        });
         btnBack = myView.findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new OnClickListener() {
             @Override
