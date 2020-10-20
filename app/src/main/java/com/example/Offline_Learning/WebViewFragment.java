@@ -38,9 +38,10 @@ public class WebViewFragment extends Fragment {
 
         //setup the WebView object and give it the initial destination.
         browser = (WebView) myView.findViewById(R.id.webkit);
+        browser.getSettings().setDomStorageEnabled(true);
         browser.getSettings().setJavaScriptEnabled(true);
         browser.getSettings().setBuiltInZoomControls(true);
-        browser.loadUrl("https://auth.udacity.com/sign-in?next=https://classroom.udacity.com");  //see note about UW main page for why ~seker/
+        browser.loadUrl("https://www.udacity.com");
 
         //setup the callBack, so when the user clicks a link, we intercept it and kept everything
         //in the app.

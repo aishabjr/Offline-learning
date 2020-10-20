@@ -8,7 +8,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     tools:context="com.example.Offline_Learning.MainActivity">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:gravity="top">
 
@@ -29,6 +29,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <WebView
         android:id="@+id/webkit"
         android:layout_width="match_parent"
-        android:layout_height="690dp" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
