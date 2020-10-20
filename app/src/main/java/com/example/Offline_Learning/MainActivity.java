@@ -10,10 +10,6 @@ import android.view.MenuItem;
 
 import com.example.myapplication.R;
 
-/**
- * Had to a android:usesCleartextTraffic="true" to get it read none https web sites.  dumb... really stupid android.
- */
-
 public class MainActivity extends AppCompatActivity {
 
     WebViewFragment myMainFragment = null;
@@ -31,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     /*
      * This is intercepting the back key and then using it to go back in the browser pages
-     * if there is a previous.  See mainFragment for more information.
+     * if there is a previous.
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

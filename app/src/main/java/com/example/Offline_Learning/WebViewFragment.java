@@ -12,6 +12,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
+import com.example.myapplication.R;
+
 /**
  * A simple example that shows how to use the webview widget in an app.
  *
@@ -38,27 +40,27 @@ public class WebViewFragment extends Fragment {
         browser = (WebView) myView.findViewById(R.id.webkit);
         browser.getSettings().setJavaScriptEnabled(true);
         browser.getSettings().setBuiltInZoomControls(true);
-        browser.loadUrl("http://www.udacity.com/");
+        browser.loadUrl("https://auth.udacity.com/sign-in?next=https://classroom.udacity.com");  //see note about UW main page for why ~seker/
 
         //setup the callBack, so when the user clicks a link, we intercept it and kept everything
         //in the app.
         browser.setWebViewClient(new CallBack());
 
-        //how buttons from zoom and forward/back.
-        btnZoomIn =  myView.findViewById(R.id.btnZoomIn);
-        btnZoomIn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                browser.zoomIn();
-            }
-        });
-        btnZoomOut = myView.findViewById(R.id.btnZoomOut);
-        btnZoomOut.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                browser.zoomOut();
-            }
-        });
+//        //how buttons from zoom and forward/back.
+//        btnZoomIn =  myView.findViewById(R.id.btnZoomIn);
+//        btnZoomIn.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                browser.zoomIn();
+//            }
+//        });
+//        btnZoomOut = myView.findViewById(R.id.btnZoomOut);
+//        btnZoomOut.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                browser.zoomOut();
+//            }
+//        });
         btnBack = myView.findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new OnClickListener() {
             @Override
@@ -68,7 +70,7 @@ public class WebViewFragment extends Fragment {
                 }
             }
         });
-        btnForward =  myView.findViewById(R.id.btnFoward);
+        btnForward =  myView.findViewById(R.id.btnForward);
         btnForward.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
