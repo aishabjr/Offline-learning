@@ -3,39 +3,40 @@ package com.example.Offline_Learning;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.myapplication.R;
+import com.example.offline_learning.R;
+import com.google.android.gms.nearby.connection.Strategy;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HelpFragment.OnFragmentInteractionListener {
 
-    WebViewFragment myMainFragment = null;
+    String TAG = "MainActivity";
+    public static final String ServiceId = "offlinelearning";  //need a unique value to identify app.
+    public static final int REQUEST_ACCESS_COURSE_LOCATION= 1;
+    public static final int REQUEST_ACCESS_MANAGE_STORAGE= 1;
+
+    FragmentManager fragmentManager;
+
+    /**
+     * The connection strategy we'll use for Nearby Connections. In this case, we've decided on
+     * P2P_STAR, which is a combination of Bluetooth Classic and WiFi Hotspots.  this is 1 to many, so 1 advertise and many discovery.
+     * NOTE: in tests, the discovery changed the wifi to a hotspot on most occasions.  on disconnect, it changed back.
+     */
+    public static final Strategy STRATEGY = Strategy.P2P_STAR;
+//    public static final Strategy STRATEGY = Strategy.P2P_POINT_TO_POINT;
+    //public static final Strategy STRATEGY = Strategy.P2P_CLUSTER;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (myMainFragment == null) {
-            myMainFragment = new WebViewFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, myMainFragment).commit();
-        }
-    }
 
-    /*
-     * This is intercepting the back key and then using it to go back in the browser pages
-     * if there is a previous.
-     */
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && myMainFragment.browser.canGoBack()) {
-            myMainFragment.browser.goBack();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.frag_container, new HelpFragment()).commit();
     }
 
     @Override
@@ -54,5 +55,20 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(int id) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        // Replace whatever is in the fragment_container view with this fragment,
+        if (id == 2) { //client
+            transaction.replace(R.id.frag_container, new DiscoveryFragment());
+        } else { //server
+            transaction.replace(R.id.frag_container, new AdvertiseFragment());
+        }
+        // and add the transaction to the back stack so the user can navigate back
+        transaction.addToBackStack(null);
+        // Commit the transaction
+        transaction.commit();
     }
 }
