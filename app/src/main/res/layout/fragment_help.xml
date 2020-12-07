@@ -6,17 +6,31 @@
     android:orientation="vertical"
     tools:context="com.example.Offline_Learning.HelpFragment">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Click Advertise if server, or Discovery if client."/>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
     <Button
         android:id="@+id/btn_permi"
         android:layout_width="fill_parent"
         android:layout_height="35dp"
+        android:layout_weight="1"
         android:text="Check permissions"/>
+
+    <Button
+        android:id="@+id/btn_help_main"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:text="help"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/helpMessageMain"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:text="HELP: Click Advertise if server device, or Discovery if client device."/>
 
     <TextView
         android:id="@+id/logger1"
@@ -31,14 +45,14 @@
         android:gravity="bottom">
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/buttonAdv"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_weight="1"
             android:text="Advertise" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonDisc"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_weight="1"

@@ -4,12 +4,6 @@
     tools:context="com.example.Offline_Learning.MainActivity" >
 
     <item
-        android:id="@+id/help"
-        android:orderInCategory="100"
-        android:title="Help"
-        />
-
-    <item
         android:id="@+id/exit"
         android:orderInCategory="100"
         android:title="Exit"

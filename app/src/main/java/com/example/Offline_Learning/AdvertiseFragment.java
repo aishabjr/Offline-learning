@@ -50,12 +50,13 @@ public class AdvertiseFragment extends Fragment {
 
     String TAG = "AdvertiseFragment";
     String UserNickName = "AdvertiseOfflineLearning";
-    TextView logger;
+    TextView logger, helpMessageAdv;
     boolean mIsAdvertising = false;
+
 
     String ConnectedEndPointId = "";
 
-    Button btnBack, btnForward, btnSend;
+    Button btnSend;
 
     private WebView browser;
 
@@ -69,6 +70,7 @@ public class AdvertiseFragment extends Fragment {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_advertise, container, false);
         logger = myView.findViewById(R.id.ad_output);
+        helpMessageAdv = myView.findViewById(R.id.helpMessageAdv);
 
         if (mIsAdvertising){
             logthis("Was already advertising, stopped advertising.");
@@ -79,19 +81,6 @@ public class AdvertiseFragment extends Fragment {
             startAdvertising();
         }
 
-//        myView.findViewById(R.id.start_advertise).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (mIsAdvertising){
-//                    logthis("Was already advertising, stopped advertising.");
-//                    stopAdvertising();  //already advertising, turn it off
-//                }
-//                else {
-//                    logthis("Initiating advertising...");
-//                    startAdvertising();
-//                }
-//            }
-//        });
         myView.findViewById(R.id.end_advertise).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,8 +108,7 @@ public class AdvertiseFragment extends Fragment {
         //in the app.
         browser.setWebViewClient(new AdvertiseFragment.CallBack());
 
-        btnBack = myView.findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        myView.findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (browser.canGoBack()) {
@@ -129,13 +117,19 @@ public class AdvertiseFragment extends Fragment {
             }
         });
 
-        btnForward =  myView.findViewById(R.id.btnForward);
-        btnForward.setOnClickListener(new View.OnClickListener() {
+        myView.findViewById(R.id.btnForward).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (browser.canGoForward()) {
                     browser.goForward();
                 }
+            }
+        });
+
+        myView.findViewById(R.id.btn_help_adv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpMessageAdv.setVisibility(View.VISIBLE);
             }
         });
 

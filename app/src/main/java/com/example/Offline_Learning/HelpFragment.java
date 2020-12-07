@@ -28,7 +28,7 @@ import com.example.offline_learning.R;
 public class HelpFragment extends Fragment {
     String TAG = "HelpFragment";
     private OnFragmentInteractionListener mListener;
-    TextView logger;
+    TextView logger, helpMessageMain;
     //bluetooth device and code to turn the device on if needed.
     BluetoothAdapter mBluetoothAdapter = null;
     private static final int REQUEST_ENABLE_BT = 2;
@@ -43,20 +43,27 @@ public class HelpFragment extends Fragment {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_help, container, false);
         logger = myView.findViewById(R.id.logger1);
+        helpMessageMain = myView.findViewById(R.id.helpMessageMain);
 
 
-        myView.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+        myView.findViewById(R.id.buttonDisc).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mListener != null) //don't call if null, duh...
                     mListener.onFragmentInteraction(2);
             }
         });
-        myView.findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
+        myView.findViewById(R.id.buttonAdv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mListener != null) //don't call if null, duh...
                     mListener.onFragmentInteraction(1);
+            }
+        });
+        myView.findViewById(R.id.btn_help_main).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpMessageMain.setVisibility(View.VISIBLE);
             }
         });
 

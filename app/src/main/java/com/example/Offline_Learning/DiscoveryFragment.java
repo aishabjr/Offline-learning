@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,7 +46,7 @@ import java.nio.charset.StandardCharsets;
 
 public class DiscoveryFragment extends Fragment {
     String TAG = "DiscoveryFragment";
-    TextView logger;
+    TextView logger, helpMessageDisc;
     Boolean mIsDiscovering = false;
     String UserNickName = "DiscoveryOfflineLearning";
 
@@ -64,6 +65,7 @@ public class DiscoveryFragment extends Fragment {
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_discovery, container, false);
         logger = myView.findViewById(R.id.di_output);
+        helpMessageDisc = myView.findViewById(R.id.helpMessageDisc);
 
         myImageView = myView.findViewById(R.id.image);
 
@@ -91,6 +93,12 @@ public class DiscoveryFragment extends Fragment {
                 if (mIsDiscovering) {
                     stopDiscovering();
                 }
+            }
+        });
+        myView.findViewById(R.id.btn_help_disc).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpMessageDisc.setVisibility(View.VISIBLE);
             }
         });
         return myView;

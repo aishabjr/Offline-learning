@@ -25,7 +25,22 @@
         android:layout_height="35dp"
         android:text="@string/disconnect"/>
 
+    <Button
+        android:id="@+id/btn_help_disc"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:text="help" />
+
         </LinearLayout>
+
+    <TextView
+        android:id="@+id/helpMessageDisc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:text="HELP: Click on Start Discovery to connect with server device.
+ Files received are stored in Nearby folder under device Download folder"/>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
